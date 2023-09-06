@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "59872433856",
+    "project_id": "flotty-bd38d",
+    "storage_bucket": "flotty-bd38d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:59872433856:android:8517e7375a34fcd3753f25",
+        "android_client_info": {
+          "package_name": "com.example.untitled"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "59872433856-hfftfg8f4omp6ncgap70efih1q2kd862.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAZSUS5g2Bo-kMFhtTYFgCh8XpJ9jE8B1w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "59872433856-hfftfg8f4omp6ncgap70efih1q2kd862.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,11 @@
+[
+  {
+    "featureType": "poi",
+    "elementType": "labels.icon",
+    "stylers": [
+      {
+        "color": "#fff700"
+      }
+    ]
+  }
+]
