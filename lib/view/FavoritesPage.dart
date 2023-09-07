@@ -32,31 +32,31 @@ class _FavoritesPageState extends State<FavoritesPage> {
               const Center(child: Text("You don't have any favorite yet !"))
             ]);
           } else {
-            List people = snap.data!.docs;
+            List people = snap.data!.docs
+                .where((doc) => currentUser.favorites.contains(doc.id))
+                .toList();
 
             return ListView.builder(
                 itemCount: people.length,
                 itemBuilder: (context, index) {
                   Userr user = Userr.bdd(people[index]);
-                  if(currentUser.favorites.contains(user.uid)) {
-                    return Card(
-                      elevation: 5,
-                      child: ListTile(
-                          leading: CircleAvatar(
-                            radius: 20,
-                            backgroundImage: NetworkImage(user.avatar!),
-                          ),
-                          subtitle: Text(user.email),
-                          trailing: GestureDetector(
-                            onTap: () =>
-                                FirebaseHelper().removeFavorite(user.uid),
-                            child:
-                            const Icon(Icons.favorite, color: Colors.brown),
-                          ),
-                          title: Text(
-                              "${user.firstName} ${user.lastName.toUpperCase()}")),
-                    );
-                  }
+                  return Card(
+                    elevation: 5,
+                    child: ListTile(
+                        leading: CircleAvatar(
+                          radius: 20,
+                          backgroundImage: NetworkImage(user.avatar!),
+                        ),
+                        subtitle: Text(user.email),
+                        trailing: GestureDetector(
+                          onTap: () =>
+                              FirebaseHelper().removeFavorite(user.uid),
+                          child:
+                              const Icon(Icons.favorite, color: Colors.yellow),
+                        ),
+                        title: Text(
+                            "${user.firstName} ${user.lastName.toUpperCase()}")),
+                  );
                 });
           }
         });
