@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 BackgroundPage(),
               ]),
               SizedBox(
-                  width: 600,
+                  width: 300,
                   child: Column(
                     children: [
                       const Text(
@@ -166,6 +166,9 @@ class _MyHomePageState extends State<MyHomePage> {
                           fontWeight: FontWeight.bold,
                           color: Colors.amber,
                         ),
+                      ),
+                      const SizedBox(
+                        height: 30,
                       ),
                       TextField(
                         controller: firstName,
@@ -220,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Center(
                         child: Row(children: [
                           const SizedBox(
-                            width: 230,
+                            width: 85,
                           ),
                           TextButton(
                             onPressed: () {

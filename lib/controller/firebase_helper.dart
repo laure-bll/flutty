@@ -55,14 +55,26 @@ class FirebaseHelper {
   }
 
   addFavorite(String attachedUser) {
+    currentUser.favorites!.add(attachedUser);
+
+    Map<String,dynamic> map = {
+      "favorites": currentUser.favorites
+    };
+
     cloudUsers.doc(currentUser.uid).update({
-      'favorites': FieldValue.arrayUnion([attachedUser])
+      'favorites': map["favorites"]
     });
   }
 
   removeFavorite(String attachedUser) {
+    currentUser.favorites!.remove(attachedUser);
+
+    Map<String,dynamic> map = {
+      "favorites": currentUser.favorites
+    };
+
     cloudUsers.doc(currentUser.uid).update({
-      'favorites': FieldValue.arrayRemove([attachedUser])
+      'favorites': map["favorites"]
     });
   }
 }

@@ -5,8 +5,8 @@ class CustomPath extends CustomClipper<Path>{
   @override
   Path getClip(Size size) {
     Path path = Path();
-    path.lineTo(0, size.height * 0.3);
-    path.cubicTo(size.width * 0.3, size.height * 0.1, size.width * 0.6, size.height * 0.35, size.width * 1, size.height * 0.15);
+    path.lineTo(0, size.height * 0.8);
+    path.cubicTo(size.width * 0.3, size.height * 0.1, size.width * 0.6, size.height * 0.5, size.width * 1, size.height * 0.6);
     path.lineTo(size.width, 0);
     path.close();
 

@@ -8,6 +8,7 @@ import 'package:untitled/controller/firebase_helper.dart';
 import 'package:untitled/view/Background.dart';
 import 'package:untitled/view/ErrorPage.dart';
 import 'package:untitled/view/FavoritesPage.dart';
+import 'package:untitled/view/MachineLearning.dart';
 import 'package:untitled/view/MapPage.dart';
 import 'package:untitled/view/People.dart';
 
@@ -100,6 +101,7 @@ class _DashboardState extends State<Dashboard> {
         backgroundColor: Colors.transparent,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.fixed,
         currentIndex: indexPage,
         onTap: (index) {
           setState(() {
@@ -111,6 +113,7 @@ class _DashboardState extends State<Dashboard> {
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: "Favorites"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "People"),
+          BottomNavigationBarItem(icon: Icon(Icons.airplane_ticket), label: "ML"),
         ],
       ),
       extendBodyBehindAppBar: true,
@@ -126,6 +129,8 @@ class _DashboardState extends State<Dashboard> {
         return const FavoritesPage();
       case 2:
         return const People();
+      case 3:
+        return const MachineLearning();
       default:
         return const ErrorPage();
     }

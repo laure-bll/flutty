@@ -102,7 +102,7 @@ class _PeopleState extends State<People> {
 
                   bool isFavorite = currentUser.favorites.contains(user.uid);
 
-                  if (currentUser.email != user.email) {
+                  if (currentUser.uid != user.uid) {
                     return GestureDetector(
                         onTap: () => popUp(user),
                         child: Card(
@@ -115,15 +115,18 @@ class _PeopleState extends State<People> {
                               subtitle: Text(user.email),
                               trailing: GestureDetector(
                                 onTap: () => {
-                                  isFavorite
-                                      ? FirebaseHelper()
-                                          .removeFavorite(user.uid)
-                                      : FirebaseHelper().addFavorite(user.uid),
+                                  if(isFavorite) {
+                                    FirebaseHelper().removeFavorite(user.uid),
+                                    setState(() => isFavorite = false)
+                                  } else {
+                                    FirebaseHelper().addFavorite(user.uid),
+                                    setState(() => isFavorite = true)
+                                  }
                                 },
                                 child: Icon(Icons.favorite,
                                     color: isFavorite
-                                        ? Colors.brown
-                                        : Colors.yellow),
+                                        ? Colors.yellow
+                                        : Colors.brown),
                               ),
                               title: Text(
                                   "${user.firstName} ${user.lastName.toUpperCase()}")),
