@@ -49,8 +49,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
                         ),
                         subtitle: Text(user.email),
                         trailing: GestureDetector(
-                          onTap: () =>
-                              FirebaseHelper().removeFavorite(user.uid),
+                          onTap: () => FirebaseHelper().removeFavorite(user.uid),
                           child:
                               const Icon(Icons.favorite, color: Colors.yellow),
                         ),
