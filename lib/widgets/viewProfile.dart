@@ -24,7 +24,8 @@ class ViewProfile extends StatelessWidget {
   contentBox(context) {
     List favorites = currentUser.favorites;
 
-    bool isFavorite = favorites.contains(user.email);
+    bool isFavorite = favorites.contains(user.uid);
+
     return Stack(
       children: <Widget>[
         Container(
@@ -114,8 +115,7 @@ class ViewProfile extends StatelessWidget {
                                     Navigator.pop(context);
                                   },
                                   child: const Icon(Icons.favorite,
-                                      color:
-                                          Color.fromARGB(255, 255, 158, 191)),
+                                      color: Color.fromARGB(255, 255, 158, 191)),
                                 )),
                           ),
                   ],
