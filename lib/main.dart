@@ -99,7 +99,6 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             );
           } else {
-
             return AlertDialog(
               title: const Text("Error"),
               content: const Text("Wrong credentials my dear"),
@@ -261,9 +260,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                           return const Dashboard();
                                         }))
                                       })
-                                  .catchError((err) => {
-                                        popUpError()
-                                      });
+                                  .catchError((err) => {popUpError()});
                             },
                             child: const Text("Sign in", style: TextStyle()),
                           )
