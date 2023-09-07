@@ -223,7 +223,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Center(
                         child: Row(children: [
                           const SizedBox(
-                            width: 85,
+                            width: 80,
                           ),
                           TextButton(
                             onPressed: () {
