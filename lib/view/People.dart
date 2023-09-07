@@ -35,7 +35,7 @@ class _PeopleState extends State<People> {
 
                   if (currentUser.email != user.email) {
                     return GestureDetector(
-                        onTap: () => ViewProfile(user: user),
+                        onTap: () => showDialog(builder: (context) => ViewProfile(user: user), context: context),
                         child: Card(
                           elevation: 5,
                           child: ListTile(
