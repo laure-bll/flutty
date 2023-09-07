@@ -1,9 +1,9 @@
 import 'dart:typed_data';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-
+import 'package:flutter/material.dart';
+import 'package:untitled/view/Homepage.dart';
 import '../constants.dart';
 import '../model/Userr.dart';
 
@@ -38,6 +38,15 @@ class FirebaseHelper {
     return Userr.bdd(snapchot);
   }
 
+  Future<void> signout(context) async {
+    await auth.signOut();
+    Navigator.of(context).pushAndRemoveUntil(
+        MaterialPageRoute(builder: (context) => const Homepage()),
+        (Route<dynamic> route) => false);
+    const SnackBar(
+        duration: Duration(seconds: 10), content: Text("See you soon"));
+  }
+
   addUser(String uid, Map<String, dynamic> data) {
     cloudUsers.doc(uid).set(data);
   }
@@ -57,24 +66,16 @@ class FirebaseHelper {
   addFavorite(String attachedUser) {
     currentUser.favorites!.add(attachedUser);
 
-    Map<String,dynamic> map = {
-      "favorites": currentUser.favorites
-    };
+    Map<String, dynamic> map = {"favorites": currentUser.favorites};
 
-    cloudUsers.doc(currentUser.uid).update({
-      'favorites': map["favorites"]
-    });
+    cloudUsers.doc(currentUser.uid).update({'favorites': map["favorites"]});
   }
 
   removeFavorite(String attachedUser) {
     currentUser.favorites!.remove(attachedUser);
 
-    Map<String,dynamic> map = {
-      "favorites": currentUser.favorites
-    };
+    Map<String, dynamic> map = {"favorites": currentUser.favorites};
 
-    cloudUsers.doc(currentUser.uid).update({
-      'favorites': map["favorites"]
-    });
+    cloudUsers.doc(currentUser.uid).update({'favorites': map["favorites"]});
   }
 }
