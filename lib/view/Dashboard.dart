@@ -51,7 +51,7 @@ class _DashboardState extends State<Dashboard> {
                         Navigator.pop(context);
                       });
                     },
-                    child: Text("Upload"))
+                    child: const Text("Upload"))
               ],
             );
           });
@@ -92,8 +92,13 @@ class _DashboardState extends State<Dashboard> {
               const Text("You are connected as ",
                   style: TextStyle(fontStyle: FontStyle.italic, fontSize: 16)),
               const SizedBox(height: 10),
-              Text(currentUser.email,  style: const TextStyle(fontStyle: FontStyle.italic, fontSize: 16)),
-              const SizedBox(height: 20),
+              Text(currentUser.email,
+                  style: const TextStyle(
+                      fontStyle: FontStyle.italic, fontSize: 16)),
+              const SizedBox(height: 40),
+              TextButton(
+                  onPressed: () => FirebaseHelper().signout(context),
+                  child: const Text("Log out")),
             ],
           )),
       appBar: AppBar(
@@ -113,7 +118,8 @@ class _DashboardState extends State<Dashboard> {
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: "Favorites"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "People"),
-          BottomNavigationBarItem(icon: Icon(Icons.airplane_ticket), label: "ML"),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.airplane_ticket), label: "ML"),
         ],
       ),
       extendBodyBehindAppBar: true,
