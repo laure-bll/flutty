@@ -22,7 +22,7 @@ class _MachineLearningState extends State<MachineLearning> {
   String result = "";
 
   identificationLanguage() async {
-    if (message.text != null && message.text != "") {
+    if (message.text != "") {
       String msg = await lang.identifyLanguage(message.text);
 
       setState(() {
@@ -32,7 +32,7 @@ class _MachineLearningState extends State<MachineLearning> {
   }
 
   multipleLanguages() async {
-    if (message.text != null && message.text != "") {
+    if (message.text != "") {
       List<IdentifiedLanguage> sentenceList =
           await lang.identifyPossibleLanguages(message.text);
 

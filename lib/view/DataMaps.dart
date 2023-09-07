@@ -5,8 +5,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class DataMaps extends StatefulWidget {
-  Position coordonnees;
-  DataMaps({required this.coordonnees, super.key});
+  final Position coordonnees;
+  const DataMaps({required this.coordonnees, super.key});
 
   @override
   State<DataMaps> createState() => _DataMapsState();

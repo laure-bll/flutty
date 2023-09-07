@@ -16,7 +16,9 @@ class FirebaseHelper {
       String lastName, String firstName, String email, String password) async {
     UserCredential credential = await auth.createUserWithEmailAndPassword(
         email: email, password: password);
+
     String uid = credential.user!.uid;
+
     Map<String, dynamic> data = {
       "firstName": firstName,
       "lastName": lastName,
@@ -48,6 +50,7 @@ class FirebaseHelper {
   }
 
   addUser(String uid, Map<String, dynamic> data) {
+    print(data);
     cloudUsers.doc(uid).set(data);
   }
 
@@ -64,7 +67,7 @@ class FirebaseHelper {
   }
 
   addFavorite(String attachedUser) {
-    currentUser.favorites!.add(attachedUser);
+    currentUser.favorites.add(attachedUser);
 
     Map<String, dynamic> map = {"favorites": currentUser.favorites};
 
@@ -72,7 +75,7 @@ class FirebaseHelper {
   }
 
   removeFavorite(String attachedUser) {
-    currentUser.favorites!.remove(attachedUser);
+    currentUser.favorites.remove(attachedUser);
 
     Map<String, dynamic> map = {"favorites": currentUser.favorites};
 

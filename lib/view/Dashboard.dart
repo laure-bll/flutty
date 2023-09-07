@@ -8,9 +8,10 @@ import 'package:untitled/controller/firebase_helper.dart';
 import 'package:untitled/view/Background.dart';
 import 'package:untitled/view/ErrorPage.dart';
 import 'package:untitled/view/FavoritesPage.dart';
-import 'package:untitled/view/MachineLearning.dart';
 import 'package:untitled/view/MapPage.dart';
 import 'package:untitled/view/People.dart';
+
+import 'ChatPage.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -119,7 +120,7 @@ class _DashboardState extends State<Dashboard> {
               icon: Icon(Icons.favorite), label: "Favorites"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "People"),
           BottomNavigationBarItem(
-              icon: Icon(Icons.airplane_ticket), label: "ML"),
+              icon: Icon(Icons.chat_bubble), label: "Chat"),
         ],
       ),
       extendBodyBehindAppBar: true,
@@ -136,7 +137,7 @@ class _DashboardState extends State<Dashboard> {
       case 2:
         return const People();
       case 3:
-        return const MachineLearning();
+        return const ChatPage();
       default:
         return const ErrorPage();
     }

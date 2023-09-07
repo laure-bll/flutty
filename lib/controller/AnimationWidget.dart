@@ -3,12 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 class AnimationWidget extends StatefulWidget {
-  Widget child;
-  int duration;
-
-  AnimationWidget({required this.child, required this.duration, super.key});
+  const AnimationWidget({required this.child, required this.duration, super.key});
   @override
   State<AnimationWidget> createState() => _AnimationWidgetState();
+
+  final Widget child;
+  final int duration;
 }
 
 class _AnimationWidgetState extends State<AnimationWidget> with SingleTickerProviderStateMixin {

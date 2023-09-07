@@ -1,7 +1,3 @@
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
-
 import 'model/Userr.dart';
 
 enum Gender {
