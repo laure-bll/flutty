@@ -44,39 +44,40 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDhUaYtLrAtrlgmzkjcZLMVQ8ceKfK0TK4',
-    appId: '1:59872433856:web:42002c65cc956fb1753f25',
-    messagingSenderId: '59872433856',
-    projectId: 'flotty-bd38d',
-    authDomain: 'flotty-bd38d.firebaseapp.com',
-    storageBucket: 'flotty-bd38d.appspot.com',
+    apiKey: 'AIzaSyC-mtaA8-ukehKD_W07uUu6J-cbykgLW6c',
+    appId: '1:1056178875352:web:81f116508f55354bdd60ad',
+    messagingSenderId: '1056178875352',
+    projectId: 'flutty-a38f1',
+    authDomain: 'flutty-a38f1.firebaseapp.com',
+    storageBucket: 'flutty-a38f1.appspot.com',
+    measurementId: 'G-X2JXLR4T6H',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAZSUS5g2Bo-kMFhtTYFgCh8XpJ9jE8B1w',
-    appId: '1:59872433856:android:8517e7375a34fcd3753f25',
-    messagingSenderId: '59872433856',
-    projectId: 'flotty-bd38d',
-    storageBucket: 'flotty-bd38d.appspot.com',
+    apiKey: 'AIzaSyCdJamJACbxRKQH9Ba18YsGxF_cQxLzLZQ',
+    appId: '1:1056178875352:android:92db7df15ed67b9ddd60ad',
+    messagingSenderId: '1056178875352',
+    projectId: 'flutty-a38f1',
+    storageBucket: 'flutty-a38f1.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDvKgGkfCOIUc9w8DHj9X-H_itTGU4R12I',
-    appId: '1:59872433856:ios:58d1be82ede8e9b0753f25',
-    messagingSenderId: '59872433856',
-    projectId: 'flotty-bd38d',
-    storageBucket: 'flotty-bd38d.appspot.com',
-    iosClientId: '59872433856-823fsktqki5utktq9p3c9ombfkhm96rr.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBd86PfR7IDFqIJFBdbJQnH4wyKLcH1A0A',
+    appId: '1:1056178875352:ios:93231a97f0be06aedd60ad',
+    messagingSenderId: '1056178875352',
+    projectId: 'flutty-a38f1',
+    storageBucket: 'flutty-a38f1.appspot.com',
+    iosClientId: '1056178875352-6bp49o131e9jiu5jmlp5eh479e4n2qho.apps.googleusercontent.com',
     iosBundleId: 'com.example.untitled',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDvKgGkfCOIUc9w8DHj9X-H_itTGU4R12I',
-    appId: '1:59872433856:ios:66cba180c453b8cd753f25',
-    messagingSenderId: '59872433856',
-    projectId: 'flotty-bd38d',
-    storageBucket: 'flotty-bd38d.appspot.com',
-    iosClientId: '59872433856-noop87crsopb8ur2tlunhg5de3k2jalr.apps.googleusercontent.com',
+    apiKey: 'AIzaSyBd86PfR7IDFqIJFBdbJQnH4wyKLcH1A0A',
+    appId: '1:1056178875352:ios:2bc104500a16d09fdd60ad',
+    messagingSenderId: '1056178875352',
+    projectId: 'flutty-a38f1',
+    storageBucket: 'flutty-a38f1.appspot.com',
+    iosClientId: '1056178875352-kl94jf5ant83e8a0kq5ld603lp4fh0db.apps.googleusercontent.com',
     iosBundleId: 'com.example.untitled.RunnerTests',
   );
 }

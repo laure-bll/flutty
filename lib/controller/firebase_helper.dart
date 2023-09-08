@@ -14,19 +14,20 @@ class FirebaseHelper {
 
   signUp(
       String lastName, String firstName, String email, String password) async {
-    UserCredential credential = await auth.createUserWithEmailAndPassword(
-        email: email, password: password);
+      UserCredential credential = await auth.createUserWithEmailAndPassword(
+          email: email, password: password);
 
-    String uid = credential.user!.uid;
+      String uid = credential.user!.uid;
 
-    Map<String, dynamic> data = {
-      "firstName": firstName,
-      "lastName": lastName,
-      "email": email,
-      "favorites": [],
-    };
-    addUser(uid, data);
-    return getUser(uid);
+      Map<String, dynamic> data = {
+        "firstName": firstName,
+        "lastName": lastName,
+        "email": email,
+        "favorites": [],
+      };
+
+      addUser(uid, data);
+      return getUser(uid);
   }
 
   signIn(String email, String password) async {
@@ -50,7 +51,6 @@ class FirebaseHelper {
   }
 
   addUser(String uid, Map<String, dynamic> data) {
-    print(data);
     cloudUsers.doc(uid).set(data);
   }
 

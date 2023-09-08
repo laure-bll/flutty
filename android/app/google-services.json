@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "59872433856",
-    "project_id": "flotty-bd38d",
-    "storage_bucket": "flotty-bd38d.appspot.com"
+    "project_number": "1056178875352",
+    "project_id": "flutty-a38f1",
+    "storage_bucket": "flutty-a38f1.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:59872433856:android:8517e7375a34fcd3753f25",
+        "mobilesdk_app_id": "1:1056178875352:android:92db7df15ed67b9ddd60ad",
         "android_client_info": {
           "package_name": "com.example.untitled"
         }
       },
       "oauth_client": [
         {
-          "client_id": "59872433856-hfftfg8f4omp6ncgap70efih1q2kd862.apps.googleusercontent.com",
+          "client_id": "1056178875352-36gbur6lagro8qtanjiuveeqv16ns3tb.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAZSUS5g2Bo-kMFhtTYFgCh8XpJ9jE8B1w"
+          "current_key": "AIzaSyCdJamJACbxRKQH9Ba18YsGxF_cQxLzLZQ"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "59872433856-hfftfg8f4omp6ncgap70efih1q2kd862.apps.googleusercontent.com",
+              "client_id": "1056178875352-36gbur6lagro8qtanjiuveeqv16ns3tb.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
