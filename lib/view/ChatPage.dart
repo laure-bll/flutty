@@ -2,10 +2,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:untitled/constants.dart';
 
+import '../Helper.dart';
 import '../controller/chat_helper.dart';
 import '../controller/firebase_helper.dart';
 import '../model/Userr.dart';
 import '../widgets/viewAllChats.dart';
+import 'ConversationPage.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({super.key});
@@ -61,9 +63,12 @@ class _ChatPageState extends State<ChatPage> {
                                           children: [
                                             GestureDetector(
                                               onTap: () {
-                                                ChatHelper().sendChat(user.uid,
-                                                    "she doesn't want to reply");
-                                                setState(() {});
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(builder: (context) {
+                                                      return ConversationPage(
+                                                          receiverId: getRoomReceiver(ChatHelper().getRoomId(user.uid)),
+                                                          roomId: ChatHelper().getRoomId(user.uid));
+                                                    }));
                                               },
                                               child: Column(
                                                 children: [

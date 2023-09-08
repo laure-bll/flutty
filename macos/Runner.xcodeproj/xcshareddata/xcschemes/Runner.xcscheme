@@ -22,7 +22,7 @@
   </TestAction>
   <LaunchAction buildConfiguration="Debug" selectedDebuggerIdentifier="Xcode.DebuggerFoundation.Debugger.LLDB" selectedLauncherIdentifier="Xcode.DebuggerFoundation.Launcher.LLDB" launchStyle="0" useCustomWorkingDirectory="NO" ignoresPersistentStateOnLaunch="NO" debugDocumentVersioning="YES" debugServiceExtension="internal" allowLocationSimulation="YES">
     <BuildableProductRunnable runnableDebuggingMode="0">
-      <BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="33CC10EC2044A3C60003C045" <<<<<<< HEAD BuildableName="untitled.app"=======BuildableName="flutty.app">>>>>>> dc7516e (feat: init project)
+      <BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="33CC10EC2044A3C60003C045" BuildableName="flutty.app">
         BlueprintName = "Runner"
         ReferencedContainer = "container:Runner.xcodeproj">
       </BuildableReference>
@@ -30,7 +30,7 @@
   </LaunchAction>
   <ProfileAction buildConfiguration="Profile" shouldUseLaunchSchemeArgsEnv="YES" savedToolIdentifier="" useCustomWorkingDirectory="NO" debugDocumentVersioning="YES">
     <BuildableProductRunnable runnableDebuggingMode="0">
-      <BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="33CC10EC2044A3C60003C045" <<<<<<< HEAD BuildableName="untitled.app"=======BuildableName="flutty.app">>>>>>> dc7516e (feat: init project)
+      <BuildableReference BuildableIdentifier="primary" BlueprintIdentifier="33CC10EC2044A3C60003C045" BuildableName="flutty.app">
         BlueprintName = "Runner"
         ReferencedContainer = "container:Runner.xcodeproj">
       </BuildableReference>

@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/Helper.dart';
 import 'package:untitled/constants.dart';
 import 'package:untitled/controller/firebase_helper.dart';
+import 'package:untitled/view/ConversationPage.dart';
 import '../controller/chat_helper.dart';
 import '../model/Userr.dart';
 
@@ -51,7 +52,12 @@ class ViewAllChats extends StatelessWidget {
                               children: [
                                 GestureDetector(
                                   onTap: () {
-                                    print("Item is cliked");
+                                    Navigator.push(context,
+                                        MaterialPageRoute(builder: (context) {
+                                      return ConversationPage(
+                                          receiverId: getRoomReceiver(room.id),
+                                          roomId: room.id!);
+                                    }));
                                   },
                                   child: Container(
                                     margin: const EdgeInsets.only(top: 10),
@@ -103,7 +109,7 @@ class ViewAllChats extends StatelessWidget {
                                                               messages_snap
                                                                   .data!;
                                                           return Text(
-                                                              messages.first[
+                                                              messages.last[
                                                                   "message"]);
                                                         }
                                                       })

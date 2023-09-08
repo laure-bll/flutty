@@ -85,10 +85,11 @@ class ChatHelper extends ChangeNotifier {
           .collection("ROOMS")
           .doc(roomId)
           .collection("MESSAGES")
+          .orderBy('timestamp', descending: false)
           .get();
 
       return messagesQuery.docs
-          .map((messageDoc) => messageDoc.data() as Map<String, dynamic>)
+          .map((messageDoc) => messageDoc.data())
           .toList();
     } catch (e) {
       print("Error fetching messages for room $roomId: $e");
