@@ -23,117 +23,108 @@ class ViewAllChats extends StatelessWidget {
               );
             } else {
               List rooms = snapshot.data!.docs;
-              // Container(
-              // color: Colors.pink,
 
-              return Padding(
-                padding: EdgeInsets.all(10),
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      physics: ScrollPhysics(),
-                      itemCount: rooms.length,
-                      itemBuilder: (context, int index) {
-                        final room = rooms[index];
-                        String roomId = room.id;
-                        List<String> roomSplit = roomId.split("_");
-                        String userId = roomSplit[1] == currentUser.uid
-                            ? roomSplit[2]
-                            : roomSplit[1];
+              return ListView.builder(
+                  padding: EdgeInsets.all(10),
+                  shrinkWrap: true,
+                  physics: ScrollPhysics(),
+                  itemCount: rooms.length,
+                  itemBuilder: (context, int index) {
+                    final room = rooms[index];
+                    String roomId = room.id;
+                    List<String> roomSplit = roomId.split("_");
+                    String userId = roomSplit[1] == currentUser.uid
+                        ? roomSplit[2]
+                        : roomSplit[1];
 
-                        if (isRoomMine(currentUser.uid, room.id)) {
-                          return FutureBuilder(
-                            future: FirebaseHelper().getUser(userId),
-                            builder: (context, user_snap) {
-                              if (!user_snap.hasData ||
-                                  user_snap.data == null) {
-                                return Center(
-                                  child: Text("Loading messages..."),
-                                );
-                              } else {
-                                Userr user = user_snap.data!;
-                                return Column(
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        print("Item is cliked");
-                                      },
-                                      child: Container(
-                                        margin: const EdgeInsets.only(top: 10),
-                                        child: Row(
+                    if (isRoomMine(currentUser.uid, room.id)) {
+                      return FutureBuilder(
+                        future: FirebaseHelper().getUser(userId),
+                        builder: (context, user_snap) {
+                          if (!user_snap.hasData || user_snap.data == null) {
+                            return Center(
+                              child: Text("Loading messages..."),
+                            );
+                          } else {
+                            Userr user = user_snap.data!;
+                            return Column(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {
+                                    print("Item is cliked");
+                                  },
+                                  child: Container(
+                                    margin: const EdgeInsets.only(top: 10),
+                                    child: Row(
+                                      children: [
+                                        CircleAvatar(
+                                            radius: 28,
+                                            backgroundImage:
+                                                NetworkImage(user.avatar!)),
+                                        SizedBox(
+                                          width: 20,
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            CircleAvatar(
-                                                radius: 28,
-                                                backgroundImage:
-                                                    NetworkImage(user.avatar!)),
-                                            SizedBox(
-                                              width: 20,
+                                            Text(
+                                              user.fullName,
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15),
                                             ),
                                             Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  user.fullName,
-                                                  style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 15),
-                                                ),
-                                                Column(
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .start,
-                                                    children: [
-                                                      FutureBuilder(
-                                                          future: ChatHelper()
-                                                              .getMessagesFromRoom(
-                                                                  room.id),
-                                                          builder: (context,
-                                                              messages_snap) {
-                                                            if (!messages_snap
-                                                                    .hasData ||
-                                                                messages_snap
-                                                                        .data ==
-                                                                    null) {
-                                                              return Center(
-                                                                child: Text(
-                                                                    "Loading messages..."),
-                                                              );
-                                                            } else {
-                                                              List<
-                                                                      Map<String,
-                                                                          dynamic>>
-                                                                  messages =
-                                                                  messages_snap
-                                                                      .data!;
-                                                              return Text(messages
-                                                                      .first[
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  FutureBuilder(
+                                                      future: ChatHelper()
+                                                          .getMessagesFromRoom(
+                                                              room.id),
+                                                      builder: (context,
+                                                          messages_snap) {
+                                                        if (!messages_snap
+                                                                .hasData ||
+                                                            messages_snap
+                                                                    .data ==
+                                                                null) {
+                                                          return Center(
+                                                            child: Text(
+                                                                "Loading messages..."),
+                                                          );
+                                                        } else {
+                                                          List<
+                                                                  Map<String,
+                                                                      dynamic>>
+                                                              messages =
+                                                              messages_snap
+                                                                  .data!;
+                                                          return Text(
+                                                              messages.first[
                                                                   "message"]);
-                                                            }
-                                                          })
-                                                    ]),
-                                              ],
-                                            ),
-                                            // Add your unread count and time widgets here
+                                                        }
+                                                      })
+                                                ]),
                                           ],
                                         ),
-                                      ),
+                                        // Add your unread count and time widgets here
+                                      ],
                                     ),
-                                    Divider(),
-                                  ],
-                                );
-                              }
-                            },
-                          );
-                        } else {
-                          return SizedBox.shrink();
-                        }
-                      }),
-
-              );
+                                  ),
+                                ),
+                                Divider(),
+                              ],
+                            );
+                          }
+                        },
+                      );
+                    } else {
+                      return SizedBox.shrink();
+                    }
+                  });
             }
           },
         ),

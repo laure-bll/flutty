@@ -26,8 +26,8 @@ class _ChatPageState extends State<ChatPage> {
             children: [
               Container(
                 color: Color.fromARGB(255, 226, 186, 255),
-                padding: EdgeInsets.only(left: 10, top: 120),
-                height: 230,
+                padding: EdgeInsets.only(left: 10, top: 90),
+                height: 200,
                 child: StreamBuilder<QuerySnapshot>(
                   stream: FirebaseHelper().cloudUsers.snapshots(),
                   builder: ((context, snap) {
@@ -102,19 +102,6 @@ class _ChatPageState extends State<ChatPage> {
                   }),
                 ),
               ),
-              Container(
-                width: MediaQuery.of(context).size.height * 0.45,
-
-                alignment: Alignment.centerRight,
-                height: 190,
-                child: Icon(Icons.chat_sharp,
-                    size: 30, color: Color.fromARGB(255, 40, 8, 48)),
-                // child: CircleAvatar(
-                //   radius: 40,
-                //   backgroundColor: Color.fromARGB(255, 255, 255, 255),
-                //   child: Center(child: Icon(Icons.chat_sharp)),
-                // ),
-              ),
             ],
           ),
           Column(
@@ -126,7 +113,7 @@ class _ChatPageState extends State<ChatPage> {
                     left: 16,
                   ),
                   alignment: Alignment.bottomLeft,
-                  height: 45,
+                  height: 60,
                   child: Text("Mes conversations",
                       style: TextStyle(
                           color: const Color.fromARGB(255, 61, 61, 61),
