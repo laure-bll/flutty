@@ -37,4 +37,8 @@ class Userr {
       birthday = timestamp.toDate();
     }
   }
+
+  String get fullName {
+    return "$fullName $lastName";
+  }
 }

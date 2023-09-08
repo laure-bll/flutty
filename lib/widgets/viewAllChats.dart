@@ -1,109 +1,126 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:untitled/constants.dart';
 import '../controller/chat_helper.dart';
 
 class ViewAllChats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          padding: EdgeInsets.only(top: 10),
-          child: Row(
-            children: [
-              Text(
-                'All Chats',
-              ),
-            ],
-          ),
-        ),
-        StreamBuilder<QuerySnapshot>(
+    return Align(
+      alignment: Alignment.topLeft,
+      child: Container(
+        // color: Colors.pink,
+        height: 350,
+        width: MediaQuery.of(context).size.width,
+        child: StreamBuilder<QuerySnapshot>(
           stream: ChatHelper().cloud_rooms.snapshots(),
           builder: (context, snapshot) {
             if (snapshot.data == null) {
               return Center(
-                child: Text("Aucun utilisateur"),
+                child: Text("Aucun chats"),
               );
             } else {
-              final rooms = snapshot.data!.docs;
-              print("rooms");
-              print(rooms);
-              return ListView.builder(
-                  shrinkWrap: true,
-                  physics: ScrollPhysics(),
-                  itemCount: rooms.length,
-                  itemBuilder: (context, int index) {
-                    final room = rooms[index];
-                    print("room");
-                    print(room);
-                    return Container(
-                        margin: const EdgeInsets.only(top: 20),
-                        child: Row(
-                          children: [
-                            // CircleAvatar(
-                            //   radius: 28,
-                            //   backgroundImage: AssetImage(allChat.avatar),
-                            // ),
-                            SizedBox(
-                              width: 20,
-                            ),
-                            GestureDetector(
-                              onTap: () {
-                                // Navigator.push(context,
-                                //     CupertinoPageRoute(builder: (context) {
-                                //   return ChatRoom(user: allChat.sender);
-                                // }));
+              List rooms = snapshot.data!.docs;
+
+              return Row(
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: ScrollPhysics(),
+                        itemCount: rooms.length,
+                        itemBuilder: (context, int index) {
+                          final room = rooms[index];
+
+                          if (isRoomMine(currentUser.uid, room.id)) {
+                            return FutureBuilder<List<Map<String, dynamic>>>(
+                              future: ChatHelper().getMessagesFromRoom(room.id),
+                              builder: (context, snapshot) {
+                                if (!snapshot.hasData ||
+                                    snapshot.data == null) {
+                                  return Center(
+                                    child: Text("Loading messages..."),
+                                  );
+                                } else {
+                                  List<Map<String, dynamic>> messages =
+                                  snapshot.data!;
+
+                                  print(messages.first);
+                                  return Column(
+                                    children: [
+                                      Container(
+                                        margin: const EdgeInsets.only(top: 20),
+                                        child: Row(
+                                          children: [
+                                            CircleAvatar(
+                                                radius: 28,
+                                                backgroundImage: NetworkImage(
+                                                    messages[0]["avatar"])),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            GestureDetector(
+                                              onTap: () {},
+                                              child: Column(
+                                                crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment
+                                                    .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    messages[0]["receiverName"],
+                                                    style: TextStyle(
+                                                        fontWeight:
+                                                        FontWeight.bold,
+                                                        fontSize: 15),
+                                                  ),
+                                                  Column(
+                                                      crossAxisAlignment:
+                                                      CrossAxisAlignment
+                                                          .start,
+                                                      children: [
+                                                        Text(messages
+                                                            .first["message"]),
+                                                      ]),
+                                                ],
+                                              ),
+                                            ),
+                                            Spacer(),
+                                            // Add your unread count and time widgets here
+                                          ],
+                                        ),
+                                      ),
+                                      Divider(
+                                        thickness: 0.5,
+                                        color:
+                                        Color.fromARGB(255, 214, 214, 214),
+                                      ),
+                                    ],
+                                  );
+                                }
                               },
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  // Text(
-                                  //   allChat.sender.name,
-                                  // ),
-                                  // Text(
-                                  //   allChat.text,
-                                  // ),
-                                ],
-                              ),
-                            ),
-                            Spacer(),
-                            // Column(
-                            //   crossAxisAlignment: CrossAxisAlignment.end,
-                            //   children: [
-                            //     allChat.unreadCount == 0
-                            //         ? Icon(
-                            //             Icons.done_all,
-                            //           )
-                            //         : CircleAvatar(
-                            //             radius: 8,
-                            //             backgroundColor: Colors.pink,
-                            //             child: Text(
-                            //               allChat.unreadCount.toString(),
-                            //               style: TextStyle(
-                            //                   color: Colors.white,
-                            //                   fontSize: 11,
-                            //                   fontWeight: FontWeight.bold),
-                            //             ),
-                            //           ),
-                            //     SizedBox(
-                            //       height: 10,
-                            //     ),
-                            //     // Text(
-                            //     //   allChat.time,
-                            //     // )
-                            //   ],
-                            // ),
-                          ],
-                        ));
-                  });
+                            );
+                          } else {
+                            return SizedBox.shrink();
+                          }
+                        }),
+                  ),
+                ],
+              );
             }
           },
-        )
-      ],
+        ),
+      ),
     );
   }
+}
+
+bool isRoomMine(String uid, String roomId) {
+  List<String> parts = roomId.split('_');
+  bool isRoomMine = parts.any((part) => part == uid);
+
+  return isRoomMine;
 }
