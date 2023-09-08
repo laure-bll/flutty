@@ -119,12 +119,21 @@ class _DashboardState extends State<Dashboard> {
           BottomNavigationBarItem(
               icon: Icon(Icons.favorite), label: "Favorites"),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: "People"),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.chat_bubble), label: "Chat"),
+          BottomNavigationBarItem(icon: Icon(Icons.chat_bubble), label: "Chat"),
         ],
       ),
       extendBodyBehindAppBar: true,
       body: Stack(children: [const BackgroundPage(), bodyPage(indexPage)]),
+        floatingActionButton: indexPage == 3 ? FloatingActionButton(
+          backgroundColor: Color.fromARGB(255, 255, 216, 254),
+          foregroundColor: Color.fromARGB(255, 197, 113, 230),
+          onPressed: () {
+            print("clicked");
+            //naviguer vers la nouvelle page
+
+          },
+          child: Icon(Icons.add),
+        ) : Text(""),
     );
   }
 
