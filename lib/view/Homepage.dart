@@ -18,39 +18,40 @@ class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
         child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              const Stack(children: <Widget>[
-                BackgroundPage(),
-              ]),
-              SizedBox(
-                  width: 300,
-                  child: Column(
-                    children: [
-                      const Text(
-                        "Flutty",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.amber,
-                        ),
-                      ),
-                      const SizedBox(height: 30),
-                      (displayLoginPage ? const Login() : const Signup()),
-                      Center(
-                        child: TextButton(
-                          onPressed: () => setState(
-                              () => displayLoginPage = !displayLoginPage),
-                          child: Text(displayLoginPage ? "Sign up" : "Sign in"),
-                        ),
-                      )
-                    ],
-                  )),
-              Lottie.asset("assets/animation_flowers.json")
-            ]),
+          children: [
+            const BackgroundPage(),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Column(
+                children: [
+                  const Text(
+                    "Flutty",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.amber,
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  (displayLoginPage ? const Login() : const Signup()),
+                  Center(
+                    child: TextButton(
+                      onPressed: () =>
+                          setState(() => displayLoginPage = !displayLoginPage),
+                      child: Text(displayLoginPage ? "Sign up" : "Sign in"),
+                    ),
+                  )
+                ],
+              ),
+            ),
+            Lottie.asset("assets/animation_flowers.json")
+          ],
+        ),
       ),
     );
   }
