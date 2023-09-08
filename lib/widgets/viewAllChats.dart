@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:untitled/Helper.dart';
 import 'package:untitled/constants.dart';
+import 'package:untitled/view/ConversationPage.dart';
 import '../controller/chat_helper.dart';
 
 class ViewAllChats extends StatelessWidget {
@@ -62,7 +64,12 @@ class ViewAllChats extends StatelessWidget {
                                               width: 20,
                                             ),
                                             GestureDetector(
-                                              onTap: () {},
+                                              onTap: () {
+                                                Navigator.push(context,
+                                                    MaterialPageRoute(builder: (context) {
+                                                      return ConversationPage(receiverId: getRoomReceiver(room.id),roomId: room.id!);
+                                                    }));
+                                              },
                                               child: Column(
                                                 crossAxisAlignment:
                                                 CrossAxisAlignment.start,
@@ -72,7 +79,7 @@ class ViewAllChats extends StatelessWidget {
                                                 children: [
                                                   Text(
                                                     messages[0]["receiverName"],
-                                                    style: TextStyle(
+                                                    style: const TextStyle(
                                                         fontWeight:
                                                         FontWeight.bold,
                                                         fontSize: 15),
@@ -88,12 +95,12 @@ class ViewAllChats extends StatelessWidget {
                                                 ],
                                               ),
                                             ),
-                                            Spacer(),
+                                            const Spacer(),
                                             // Add your unread count and time widgets here
                                           ],
                                         ),
                                       ),
-                                      Divider(
+                                      const Divider(
                                         thickness: 0.5,
                                         color:
                                         Color.fromARGB(255, 214, 214, 214),

@@ -30,7 +30,7 @@ class _ChatPageState extends State<ChatPage> {
                   children: [
                     ViewAllChats(),
                     Container(
-                      // color: Colors.pink,
+                        // color: Colors.pink,
                         padding: EdgeInsets.only(
                           left: 16,
                         ),
@@ -65,10 +65,10 @@ class _ChatPageState extends State<ChatPage> {
                     return Stack(
                       children: [
                         GestureDetector(
+                          child: Text("NOUVEAU MESSAGE"),
                           onTap: () {
                             print("clicked");
-                            ChatHelper().sendChat(
-                                "hsshFfqedQWaj2laz3H9q9Ypal72",
+                            ChatHelper().sendChat("mOx5v5AwAwRBFFogy8SL",
                                 "she doesn't want to reply");
                             setState(() {});
                           },
@@ -87,9 +87,8 @@ class _ChatPageState extends State<ChatPage> {
                                         .map((doc) => Userr.bdd(doc))
                                         .firstWhere(
                                           (user) => user.uid == favoriteEmail,
-                                    );
-                                    bool isFavorite =
-                                    favorites.contains(user?.email);
+                                        );
+
                                     if (user != null) {
                                       return Row(
                                         children: [
@@ -98,14 +97,14 @@ class _ChatPageState extends State<ChatPage> {
                                               CircleAvatar(
                                                 radius: 40,
                                                 backgroundImage:
-                                                NetworkImage(user.avatar!),
+                                                    NetworkImage(user.avatar!),
                                               ),
                                               SizedBox(height: 5),
                                               Container(
                                                 child: Text(user.fullName,
                                                     style: TextStyle(
                                                         fontWeight:
-                                                        FontWeight.w400)),
+                                                            FontWeight.w400)),
                                               ),
                                             ],
                                           ),
@@ -129,7 +128,6 @@ class _ChatPageState extends State<ChatPage> {
             ),
             Container(
               width: MediaQuery.of(context).size.height * 0.45,
-
               alignment: Alignment.centerRight,
               height: 190,
               child: Icon(Icons.chat_sharp,
