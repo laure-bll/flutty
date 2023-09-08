@@ -30,7 +30,7 @@ class _ChatPageState extends State<ChatPage> {
                   children: [
                     ViewAllChats(),
                     Container(
-                      // color: Colors.pink,
+                        // color: Colors.pink,
                         padding: EdgeInsets.only(
                           left: 16,
                         ),
@@ -64,15 +64,6 @@ class _ChatPageState extends State<ChatPage> {
                     List documents = snap.data!.docs;
                     return Stack(
                       children: [
-                        GestureDetector(
-                          onTap: () {
-                            print("clicked");
-                            ChatHelper().sendChat(
-                                "hsshFfqedQWaj2laz3H9q9Ypal72",
-                                "she doesn't want to reply");
-                            setState(() {});
-                          },
-                        ),
                         Row(
                           children: [
                             SizedBox(width: 30),
@@ -87,27 +78,35 @@ class _ChatPageState extends State<ChatPage> {
                                         .map((doc) => Userr.bdd(doc))
                                         .firstWhere(
                                           (user) => user.uid == favoriteEmail,
-                                    );
+                                        );
                                     bool isFavorite =
-                                    favorites.contains(user?.email);
+                                        favorites.contains(user?.email);
                                     if (user != null) {
                                       return Row(
                                         children: [
-                                          Column(
-                                            children: [
-                                              CircleAvatar(
-                                                radius: 40,
-                                                backgroundImage:
-                                                NetworkImage(user.avatar!),
-                                              ),
-                                              SizedBox(height: 5),
-                                              Container(
-                                                child: Text(user.fullName,
-                                                    style: TextStyle(
-                                                        fontWeight:
-                                                        FontWeight.w400)),
-                                              ),
-                                            ],
+                                          GestureDetector(
+                                            onTap: () {
+                                              print("clicked");
+                                              ChatHelper().sendChat(user.uid,
+                                                  "she doesn't want to reply");
+                                              setState(() {});
+                                            },
+                                            child: Column(
+                                              children: [
+                                                CircleAvatar(
+                                                  radius: 40,
+                                                  backgroundImage: NetworkImage(
+                                                      user.avatar!),
+                                                ),
+                                                SizedBox(height: 5),
+                                                Container(
+                                                  child: Text(user.fullName,
+                                                      style: TextStyle(
+                                                          fontWeight:
+                                                              FontWeight.w400)),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                           SizedBox(width: 10),
                                         ],
