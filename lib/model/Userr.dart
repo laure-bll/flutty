@@ -39,6 +39,6 @@ class Userr {
   }
 
   String get fullName {
-    return "$fullName $lastName";
+    return "$firstName $lastName";
   }
 }

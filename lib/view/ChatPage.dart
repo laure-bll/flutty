@@ -62,7 +62,6 @@ class _ChatPageState extends State<ChatPage> {
                     );
                   } else {
                     List documents = snap.data!.docs;
-                    String recentMessage;
                     return Stack(
                       children: [
                         GestureDetector(
@@ -87,7 +86,7 @@ class _ChatPageState extends State<ChatPage> {
                                     Userr? user = documents
                                         .map((doc) => Userr.bdd(doc))
                                         .firstWhere(
-                                          (user) => user.email == favoriteEmail,
+                                          (user) => user.uid == favoriteEmail,
                                     );
                                     bool isFavorite =
                                     favorites.contains(user?.email);
