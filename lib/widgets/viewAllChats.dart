@@ -109,7 +109,7 @@ class ViewAllChats extends StatelessWidget {
                                                               messages_snap
                                                                   .data!;
                                                           return Text(
-                                                              messages.first[
+                                                              messages.last[
                                                                   "message"]);
                                                         }
                                                       })

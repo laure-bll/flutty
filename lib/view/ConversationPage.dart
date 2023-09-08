@@ -72,7 +72,7 @@ class _ConversationPageState extends State<ConversationPage> {
                                 Color bg =
                                     messages[i]["senderId"] == currentUser.uid
                                         ? Colors.amberAccent
-                                        : Colors.deepOrangeAccent;
+                                        : Colors.orangeAccent;
 
                                 Timestamp timestamp = messages[i]["timestamp"];
                                 DateTime date = DateTime.parse(
@@ -80,19 +80,24 @@ class _ConversationPageState extends State<ConversationPage> {
 
                                 return SizedBox(
                                     height: 60,
-                                    child: Card(
-                                        color: bg,
-                                        elevation: 5,
-                                        child: Column(children: [
-                                          Text(date.toString(),
-                                              style: const TextStyle(
-                                                fontStyle: FontStyle.italic,
-                                              )),
-                                          Text(msg,
-                                              style: const TextStyle(
-                                                  color: Colors.brown,
-                                                  fontSize: 16)),
-                                        ])));
+                                    child: Container(
+                                        margin: messages[i]["senderId"] ==
+                                                currentUser.uid
+                                            ? EdgeInsets.only(left: 50)
+                                            : EdgeInsets.only(right: 50),
+                                        child: Card(
+                                            color: bg,
+                                            elevation: 5,
+                                            child: Column(children: [
+                                              Text(date.toString(),
+                                                  style: const TextStyle(
+                                                    fontStyle: FontStyle.italic,
+                                                  )),
+                                              Text(msg,
+                                                  style: const TextStyle(
+                                                      color: Colors.brown,
+                                                      fontSize: 16)),
+                                            ]))));
                               }),
                         ),
                       ),
@@ -101,9 +106,12 @@ class _ConversationPageState extends State<ConversationPage> {
                         decoration: InputDecoration(
                           suffixIcon: GestureDetector(
                             onTap: () {
-                              ChatHelper().sendChat(widget.receiverId,
-                                  newMessage.text);
-                              setState(() {});
+                              if (newMessage.text != "" &&
+                                  newMessage.text != null) {
+                                ChatHelper().sendChat(
+                                    widget.receiverId, newMessage.text);
+                                setState(() {});
+                              }
                             },
                             child: const Icon(Icons.send),
                           ),
